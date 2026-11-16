@@ -1,0 +1,9 @@
+# File di sistema del Mac
+.DS_Store
+
+# Note interne di progetto: il repository è pubblico, queste restano solo sul computer
+CLAUDE.md
+.claude/
+
+# Screenshot originale del logo (il sito usa le versioni in assets/logo/)
+LOFT_logo.jpeg

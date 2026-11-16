@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<!--
+  LOFT – Lab of Functional Training · sito vetrina one-page
+  ----------------------------------------------------------
+  - I TESTI si modificano direttamente qui sotto, sezione per sezione.
+  - I CONTATTI (telefono, WhatsApp, email) sono centralizzati in js/main.js,
+    in cima al file (oggetto CONTATTI). Cambiali lì, una volta sola.
+  - Tutto ciò che è da completare è marcato con [DA INSERIRE] o con un commento "DA SOSTITUIRE"
+    (cerca queste parole nel file).
+-->
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- SEO base -->
+  <title>LOFT – Lab of Functional Training | Personal training a Rimini</title>
+  <meta name="description" content="Studio di personal training a Rimini. Allenamento funzionale con massimo 2–3 persone per trainer: attenzione individuale e programmazione su misura, per tutte le età.">
+  <meta name="theme-color" content="#1A1A1A">
+
+  <!-- Open Graph: l'anteprima quando si condivide il link su WhatsApp / Instagram -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="it_IT">
+  <meta property="og:title" content="LOFT – Lab of Functional Training">
+  <meta property="og:description" content="Allenamento funzionale a Rimini. Seguito davvero: massimo 2–3 persone per trainer.">
+  <!-- Indirizzi completi (WhatsApp e Facebook li vogliono così).
+       DA SOSTITUIRE quando ci sarà il dominio loftstudiopt.it -->
+  <link rel="canonical" href="https://giacomociotti.github.io/loft/">
+  <meta property="og:url" content="https://giacomociotti.github.io/loft/">
+  <meta property="og:image" content="https://giacomociotti.github.io/loft/assets/logo/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Icone (favicon) ricavate dal logo -->
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/logo/favicon-32.png">
+  <link rel="apple-touch-icon" href="assets/logo/apple-touch-icon.png">
+
+  <!-- Font: Montserrat da Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800;900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Dati strutturati per Google (scheda attività locale).
+       Telefono ed email da aggiungere quando saranno quelli reali:
+       "telephone": "+39...", "email": "..." -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SportsActivityLocation",
+    "name": "LOFT – Lab of Functional Training",
+    "description": "Studio di personal training e allenamento funzionale a Rimini.",
+    "url": "https://giacomociotti.github.io/loft/",
+    "image": "https://giacomociotti.github.io/loft/assets/logo/og-image.jpg",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Via Circonvallazione Occidentale 32",
+      "addressLocality": "Rimini",
+      "addressRegion": "RN",
+      "addressCountry": "IT"
+    },
+    "sameAs": ["https://www.instagram.com/loft.studiopt"]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Link nascosto per chi naviga da tastiera: salta direttamente al contenuto -->
+  <a class="skip-link" href="#metodo">Vai al contenuto</a>
+
+  <!-- ===================== MENU IN ALTO ===================== -->
+  <header class="site-header" id="top">
+    <div class="container header-inner">
+      <a href="#top" class="header-logo" aria-label="LOFT – torna all'inizio">
+        <img src="assets/logo/loft-logo-bianco.png" alt="LOFT – Lab of Functional Training" width="703" height="336">
+      </a>
+
+      <!-- Bottone hamburger: visibile solo su telefono -->
+      <button class="nav-toggle" aria-expanded="false" aria-controls="menu" aria-label="Apri il menu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="nav" id="menu" aria-label="Menu principale">
+        <a href="#metodo">Il metodo</a>
+        <a href="#cosa-facciamo">Cosa facciamo</a>
+        <a href="#trainer">I trainer</a>
+        <a href="#come-funziona">Come funziona</a>
+        <a href="#dove-siamo">Dove siamo</a>
+        <a href="#contatti" class="btn btn-light nav-cta">Prenota la prova</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ===================== 1. HERO ===================== -->
+    <section class="hero">
+      <div class="container hero-inner">
+        <p class="eyebrow">Personal training · Rimini</p>
+        <h1 class="hero-title">
+          Allenamento funzionale.<br>
+          <span class="outline">Seguito davvero.</span>
+        </h1>
+        <p class="hero-lead">
+          Uno studio, due trainer, al massimo 2–3 persone per volta.
+          Ti alleni con qualcuno che guarda ogni tua ripetizione.
+        </p>
+        <div class="hero-actions">
+          <!-- "gratuita" da confermare con i titolari -->
+          <a href="#contatti" class="btn btn-light">Prenota la tua prima lezione di prova</a>
+          <a href="#metodo" class="link-arrow">Scopri il metodo</a>
+        </div>
+      </div>
+      <!-- Grande "LOFT" decorativo sullo sfondo -->
+      <img class="hero-watermark" src="assets/logo/loft-logo-bianco.png" alt="" aria-hidden="true" width="703" height="336">
+    </section>
+
+    <!-- ===================== 2. IL METODO / CHI SIAMO ===================== -->
+    <section class="section section-light cut-top" id="metodo">
+      <div class="container">
+        <p class="eyebrow">Il metodo</p>
+        <h2 class="section-title">Non sei un numero.</h2>
+
+        <div class="split">
+          <div class="prose">
+            <p>
+              LOFT non è una palestra. È uno studio di personal training dove ogni trainer
+              segue <strong>al massimo 2–3 persone alla volta</strong>.
+            </p>
+            <p>
+              Questo significa correzione costante della tecnica, carichi giusti per te
+              e un programma costruito sui tuoi obiettivi, non preso da una scheda standard.
+            </p>
+            <p>
+              Alleniamo persone di <strong>tutte le età</strong>: chi parte da zero, chi fa sport,
+              chi vuole tornare in forma dopo una pausa. L'allenamento si adatta a te,
+              non il contrario.
+            </p>
+          </div>
+
+          <ul class="facts">
+            <li><span class="fact-num">2–3</span><span class="fact-label">persone per trainer</span></li>
+            <li><span class="fact-num">2</span><span class="fact-label">trainer qualificati</span></li>
+            <li><span class="fact-num">0</span><span class="fact-label">schede uguali per tutti</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== 3. COSA FACCIAMO ===================== -->
+    <section class="section section-dark cut-top" id="cosa-facciamo">
+      <div class="container">
+        <p class="eyebrow">Cosa facciamo</p>
+        <h2 class="section-title">Allenamento funzionale.<br>Senza fronzoli.</h2>
+
+        <div class="cards">
+          <article class="card">
+            <span class="card-num">01</span>
+            <h3>Forza</h3>
+            <p>Pesi liberi e tecnica pulita. Costruiamo forza vera, quella che serve nella vita di tutti i giorni e nello sport.</p>
+          </article>
+          <article class="card">
+            <span class="card-num">02</span>
+            <h3>Corpo libero</h3>
+            <p>Controllo, mobilità e stabilità. Impari a muoverti bene prima di caricare.</p>
+          </article>
+          <article class="card">
+            <span class="card-num">03</span>
+            <h3>Circuiti e condizionamento</h3>
+            <p>Lavoro metabolico ad alta intensità, dosato sul tuo livello. Fiato, resistenza, energia.</p>
+          </article>
+          <article class="card">
+            <span class="card-num">04</span>
+            <h3>Attrezzi</h3>
+            <p>Vogatore, spalliere e attrezzatura funzionale. Strumenti scelti per uno scopo, non per riempire la sala.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== 4. I TRAINER ===================== -->
+    <section class="section section-light cut-top" id="trainer">
+      <div class="container">
+        <p class="eyebrow">I trainer</p>
+        <h2 class="section-title">Chi ti segue.</h2>
+
+        <div class="trainers">
+          <article class="trainer">
+            <!-- DA SOSTITUIRE: foto del trainer.
+                 Quando c'è la foto, sostituisci il <div class="trainer-photo ..."> con:
+                 <img class="trainer-photo" src="assets/img/francesco-nanni.webp" alt="Francesco Nanni, trainer di LOFT" loading="lazy" width="800" height="1000"> -->
+            <div class="trainer-photo trainer-photo-placeholder" role="img" aria-label="Foto di Francesco Nanni in arrivo">FN</div>
+            <div class="trainer-body">
+              <h3>Francesco Nanni</h3>
+              <ul class="tags">
+                <li>Laurea in Scienze Motorie</li>
+                <li>Massofisioterapista</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="trainer">
+            <!-- DA SOSTITUIRE: foto del trainer (vedi istruzioni sopra), es. assets/img/andrea-naccari.webp -->
+            <div class="trainer-photo trainer-photo-placeholder" role="img" aria-label="Foto di Andrea Naccari in arrivo">AN</div>
+            <div class="trainer-body">
+              <h3>Andrea Naccari</h3>
+              <ul class="tags">
+                <li>Chinesiologo</li>
+                <li>Personal Trainer</li>
+                <li>Strength &amp; Conditioning</li>
+                <li>Coaching online</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== 5. COME FUNZIONA ===================== -->
+    <section class="section section-dark cut-top" id="come-funziona">
+      <div class="container">
+        <p class="eyebrow">Come funziona</p>
+        <h2 class="section-title">Tre passi.</h2>
+
+        <ol class="steps">
+          <li class="step">
+            <span class="step-num">1</span>
+            <h3>Ci contatti</h3>
+            <p>Un messaggio su WhatsApp, una telefonata o una mail. Ci racconti cosa cerchi.</p>
+          </li>
+          <li class="step">
+            <span class="step-num">2</span>
+            <h3>Lezione di prova</h3>
+            <p>Ci conosciamo in studio. Valutiamo come ti muovi, il tuo livello e i tuoi obiettivi.</p>
+          </li>
+          <li class="step">
+            <span class="step-num">3</span>
+            <h3>Il tuo percorso</h3>
+            <p>Costruiamo un programma su misura e ti seguiamo, allenamento dopo allenamento.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ===================== 6. DOVE SIAMO E ORARI ===================== -->
+    <section class="section section-light cut-top" id="dove-siamo">
+      <div class="container">
+        <p class="eyebrow">Dove siamo</p>
+        <h2 class="section-title">Rimini.</h2>
+
+        <div class="split">
+          <div class="info">
+            <h3>Indirizzo</h3>
+            <p>
+              Via Circonvallazione Occidentale 32<br>
+              47923 Rimini (RN)
+            </p>
+            <p>
+              <a class="link-arrow link-dark" href="https://www.google.com/maps/search/?api=1&query=Via+Circonvallazione+Occidentale+32+Rimini" target="_blank" rel="noopener">Apri in Google Maps</a>
+            </p>
+
+            <h3>Orari</h3>
+            <p>Su appuntamento, in base alle tue esigenze.</p>
+            <!-- DA SOSTITUIRE: fasce orarie di apertura -->
+            <p class="placeholder">Lun–Ven: [DA INSERIRE]<br>Sabato: [DA INSERIRE]</p>
+          </div>
+
+          <!-- Mappa Google: embed gratuito, nessuna API key necessaria -->
+          <div class="map">
+            <iframe
+              title="Mappa: LOFT, Via Circonvallazione Occidentale 32, Rimini"
+              src="https://www.google.com/maps?q=Via+Circonvallazione+Occidentale+32,+Rimini&output=embed"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== 7. CONTATTI ===================== -->
+    <section class="section section-dark cut-top contact" id="contatti">
+      <div class="container">
+        <p class="eyebrow">Contatti</p>
+        <h2 class="section-title">Prenota la tua<br>prima lezione di prova.</h2>
+        <!-- DA SOSTITUIRE: confermare con i titolari che la prova sia gratuita -->
+        <p class="contact-lead">La prima lezione è gratuita. Scrivici e troviamo insieme il giorno giusto.</p>
+
+        <!-- I link qui sotto vengono completati da js/main.js (oggetto CONTATTI) -->
+        <div class="contact-actions">
+          <a class="btn btn-light" data-contatto="whatsapp" href="#" target="_blank" rel="noopener">Scrivici su WhatsApp</a>
+          <a class="btn btn-outline" data-contatto="telefono" href="#">Chiama</a>
+        </div>
+
+        <ul class="contact-list">
+          <li><span>Telefono</span> <a data-contatto="telefono" data-mostra="testo" href="#">[DA INSERIRE]</a></li>
+          <li><span>Email</span> <a data-contatto="email" data-mostra="testo" href="#">[DA INSERIRE]</a></li>
+          <li><span>Instagram</span> <a href="https://www.instagram.com/loft.studiopt" target="_blank" rel="noopener">@loft.studiopt</a></li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===================== 8. FOOTER ===================== -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <img class="footer-logo" src="assets/logo/loft-logo-bianco.png" alt="LOFT – Lab of Functional Training" width="703" height="336" loading="lazy">
+      <div class="footer-info">
+        <p>Via Circonvallazione Occidentale 32, Rimini (RN)</p>
+        <p><a href="https://www.instagram.com/loft.studiopt" target="_blank" rel="noopener">Instagram @loft.studiopt</a></p>
+        <!-- DA SOSTITUIRE: P.IVA e ragione sociale -->
+        <p>P.IVA [DA INSERIRE]</p>
+        <p>© <span id="anno">2026</span> LOFT · <a href="privacy.html">Privacy</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

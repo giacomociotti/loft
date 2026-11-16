@@ -1,0 +1,447 @@
+/* =========================================================
+   LOFT – foglio di stile
+   Approccio "mobile-first": le regole base sono per il telefono,
+   le @media (min-width: ...) in fondo aggiungono il layout per schermi grandi.
+   ========================================================= */
+
+/* ---------- 1. VARIABILI (colori, font, misure) ---------- */
+:root {
+  --nero: #1A1A1A;        /* nero del logo */
+  --antracite: #36373A;   /* grigio antracite, card e blocchi scuri */
+  --grigio: #8A8B8E;      /* grigio medio per testi secondari su scuro */
+  --grigio-chiaro: #EDEDED;
+  --bianco: #FFFFFF;
+
+  --font: "Montserrat", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --gutter: 20px;          /* margine laterale su telefono */
+  --max: 1180px;           /* larghezza massima del contenuto */
+  --taglio: 6vw;           /* altezza del taglio diagonale tra le sezioni */
+  --header-h: 64px;
+}
+
+/* ---------- 2. BASE ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;                  /* scroll fluido verso le sezioni */
+  scroll-padding-top: var(--header-h);      /* il menu fisso non copre i titoli */
+}
+
+body {
+  margin: 0;
+  font-family: var(--font);
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--bianco);
+  background: var(--nero);
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; display: block; }
+a { color: inherit; }
+h1, h2, h3 { margin: 0; line-height: 1.02; }
+p { margin: 0 0 1em; }
+
+.container {
+  width: 100%;
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+/* Contorno ben visibile per chi naviga con la tastiera */
+:focus-visible { outline: 3px solid currentColor; outline-offset: 3px; }
+
+.skip-link {
+  position: absolute; left: -9999px; top: 0;
+  background: var(--bianco); color: var(--nero);
+  padding: 10px 16px; z-index: 100; font-weight: 600;
+}
+.skip-link:focus { left: 10px; top: 10px; }
+
+/* ---------- 3. TIPOGRAFIA RICORRENTE ---------- */
+
+/* Occhiello: piccolo, maiuscolo, spaziato come la tagline del logo */
+.eyebrow {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  margin-bottom: 1.2em;
+  display: flex; align-items: center; gap: 12px;
+}
+.eyebrow::before {             /* trattino obliquo, richiama il taglio della F */
+  content: "";
+  width: 28px; height: 3px;
+  background: currentColor;
+  transform: skewX(-40deg);
+}
+
+.section-title {
+  font-size: clamp(2.2rem, 9vw, 5rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.8em;
+}
+
+.prose p, .info p { font-weight: 300; font-size: 1.05rem; }
+strong { font-weight: 600; }
+
+.placeholder { opacity: 0.6; font-style: italic; }
+
+/* ---------- 4. BOTTONI E LINK ---------- */
+.btn {
+  display: inline-block;
+  padding: 16px 28px;
+  font-weight: 800;
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  text-align: center;
+  border: 2px solid transparent;
+  /* angolo in basso a destra tagliato in diagonale */
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%);
+  transition: background-color .2s, color .2s;
+}
+.btn-light { background: var(--bianco); color: var(--nero); }
+.btn-light:hover, .btn-light:focus-visible { background: var(--grigio-chiaro); }
+.btn-outline { border-color: var(--bianco); color: var(--bianco); }
+.btn-outline:hover, .btn-outline:focus-visible { background: var(--bianco); color: var(--nero); }
+.btn:focus-visible { outline: none; text-decoration: underline; text-underline-offset: 4px; }
+
+.link-arrow {
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-bottom: 2px solid currentColor;
+  padding-bottom: 2px;
+}
+.link-arrow::after { content: " →"; }
+
+/* ---------- 5. HEADER E MENU ---------- */
+.site-header {
+  position: fixed; inset: 0 0 auto 0;
+  z-index: 50;
+  height: var(--header-h);
+  transition: background-color .25s;
+}
+.site-header.scrolled, body.menu-aperto .site-header { background: var(--nero); }
+
+.header-inner {
+  height: 100%;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.header-logo img { height: 38px; width: auto; }
+
+/* Hamburger: tre lineette che diventano una X */
+.nav-toggle {
+  width: 44px; height: 44px;
+  background: none; border: 0; padding: 10px;
+  color: var(--bianco); cursor: pointer;
+  display: flex; flex-direction: column; justify-content: center; gap: 6px;
+  z-index: 60;
+}
+.nav-toggle span {
+  display: block; height: 2px; background: currentColor;
+  transition: transform .25s, opacity .25s;
+}
+body.menu-aperto .nav-toggle span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+body.menu-aperto .nav-toggle span:nth-child(2) { opacity: 0; }
+body.menu-aperto .nav-toggle span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+/* Su telefono il menu è un pannello a tutto schermo */
+.nav {
+  position: fixed; inset: var(--header-h) 0 0 0;
+  background: var(--nero);
+  display: flex; flex-direction: column; gap: 4px;
+  padding: 32px var(--gutter);
+  visibility: hidden; opacity: 0;
+  transition: opacity .25s, visibility .25s;
+}
+body.menu-aperto .nav { visibility: visible; opacity: 1; }
+body.menu-aperto { overflow: hidden; }   /* blocca lo scroll sotto il menu */
+
+.nav a {
+  font-size: 1.6rem; font-weight: 800; text-transform: uppercase;
+  text-decoration: none; padding: 8px 0;
+}
+.nav .nav-cta { margin-top: 24px; font-size: 0.85rem; padding: 16px 28px; }
+
+/* ---------- 6. HERO ---------- */
+.hero {
+  position: relative;
+  min-height: 100svh;            /* altezza dello schermo del telefono */
+  display: flex; align-items: center;
+  padding: calc(var(--header-h) + 40px) 0 calc(var(--taglio) + 64px);
+  overflow: hidden;
+  background:
+    /* leggere righe diagonali, effetto "industriale" */
+    repeating-linear-gradient(-50deg, transparent 0 22px, rgba(255,255,255,.025) 22px 23px),
+    var(--nero);
+}
+.hero-inner { position: relative; z-index: 1; }
+
+.hero-title {
+  font-size: clamp(2.2rem, 10.5vw, 7.5rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.45em;
+}
+/* Seconda riga del titolo in grigio, per dare ritmo */
+.outline { color: var(--grigio); }
+
+.hero-lead {
+  max-width: 34ch;
+  font-size: 1.1rem; font-weight: 300;
+  color: #D6D6D6;
+  margin-bottom: 2em;
+}
+.hero-actions {
+  display: flex; flex-direction: column; align-items: flex-start; gap: 24px;
+}
+
+.hero-watermark {
+  position: absolute;
+  right: -12%; bottom: 8%;
+  width: 95%; max-width: 900px; height: auto;
+  opacity: 0.05;
+  pointer-events: none;
+}
+
+/* ---------- 7. SEZIONI E TAGLIO DIAGONALE ---------- */
+.section {
+  position: relative;
+  padding: 72px 0 88px;
+}
+.section-light { background: var(--bianco); color: var(--nero); }
+.section-dark  { background: var(--nero);   color: var(--bianco); }
+
+/* Ogni sezione "sale" sopra la precedente con un bordo obliquo */
+.cut-top {
+  margin-top: calc(var(--taglio) * -1);
+  padding-top: calc(var(--taglio) + 64px);
+  clip-path: polygon(0 var(--taglio), 100% 0, 100% 100%, 0 100%);
+}
+
+/* Due colonne su desktop, una sopra l'altra su telefono */
+.split { display: grid; gap: 48px; }
+
+/* ---------- 8. IL METODO: numeri ---------- */
+.facts {
+  list-style: none; margin: 0; padding: 0;
+  display: grid; gap: 0;
+}
+.facts li {
+  display: flex; align-items: baseline; gap: 20px;
+  padding: 20px 0;
+  border-top: 2px solid var(--nero);
+}
+.facts li:last-child { border-bottom: 2px solid var(--nero); }
+.fact-num {
+  font-size: 3.2rem; font-weight: 900; line-height: 1;
+  min-width: 2.6ch;
+}
+.fact-label {
+  font-size: 0.8rem; font-weight: 600;
+  letter-spacing: 0.18em; text-transform: uppercase;
+}
+
+/* ---------- 9. COSA FACCIAMO: card ---------- */
+.cards { display: grid; gap: 16px; }
+.card {
+  background: var(--antracite);
+  padding: 32px 28px 36px;
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 28px), calc(100% - 28px) 100%, 0 100%);
+}
+.card-num {
+  display: block;
+  font-size: 0.8rem; font-weight: 600; letter-spacing: 0.25em;
+  color: var(--grigio);
+  margin-bottom: 40px;
+}
+.card h3 {
+  font-size: 1.5rem; font-weight: 900; text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.card p { font-weight: 300; color: #D6D6D6; margin: 0; }
+
+/* ---------- 10. TRAINER ---------- */
+.trainers { display: grid; gap: 40px; }
+.trainer-photo {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  /* foto in bianco e nero ad alto contrasto */
+  filter: grayscale(1) contrast(1.15);
+}
+.trainer-photo-placeholder {
+  background:
+    repeating-linear-gradient(-50deg, transparent 0 22px, rgba(255,255,255,.04) 22px 23px),
+    var(--antracite);
+  color: rgba(255,255,255,.18);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 7rem; font-weight: 900; letter-spacing: -0.04em;
+}
+.trainer-body {
+  padding-top: 20px;
+  border-top: 6px solid var(--nero);
+  margin-top: 0;
+}
+.trainer h3 {
+  font-size: 1.9rem; font-weight: 900; text-transform: uppercase;
+  margin-bottom: 14px;
+}
+.tags {
+  list-style: none; margin: 0; padding: 0;
+  display: flex; flex-wrap: wrap; gap: 8px;
+}
+.tags li {
+  font-size: 0.72rem; font-weight: 600;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  border: 1.5px solid var(--nero);
+  padding: 6px 10px;
+}
+
+/* ---------- 11. COME FUNZIONA ---------- */
+.steps {
+  list-style: none; margin: 0; padding: 0;
+  display: grid; gap: 40px;
+  counter-reset: none;
+}
+.step { border-top: 2px solid var(--antracite); padding-top: 24px; }
+.step-num {
+  display: block;
+  font-size: 4.5rem; font-weight: 900; line-height: 1;
+  color: var(--antracite);
+  margin-bottom: 16px;
+}
+.step h3 {
+  font-size: 1.35rem; font-weight: 900; text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.step p { font-weight: 300; color: #D6D6D6; margin: 0; }
+
+/* ---------- 12. DOVE SIAMO ---------- */
+.info h3 {
+  font-size: 0.8rem; font-weight: 800;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  margin: 32px 0 10px;
+}
+.info h3:first-child { margin-top: 0; }
+.link-dark { color: var(--nero); }
+
+.map {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  background: var(--grigio-chiaro);
+}
+.map iframe {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%; border: 0;
+  filter: grayscale(1) contrast(1.05);   /* mappa in scala di grigi, in linea col sito */
+}
+
+/* ---------- 13. CONTATTI ---------- */
+.contact { padding-bottom: 100px; }
+.contact-lead {
+  font-size: 1.15rem; font-weight: 300; color: #D6D6D6;
+  max-width: 40ch; margin-top: -1em; margin-bottom: 2em;
+}
+.contact-actions {
+  display: flex; flex-direction: column; gap: 14px;
+  margin-bottom: 56px;
+}
+.contact-list {
+  list-style: none; margin: 0; padding: 0;
+}
+.contact-list li {
+  display: flex; flex-direction: column; gap: 2px;
+  padding: 18px 0;
+  border-top: 1px solid var(--antracite);
+}
+.contact-list span {
+  font-size: 0.72rem; font-weight: 600;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--grigio);
+}
+.contact-list a {
+  font-size: 1.25rem; font-weight: 600; text-decoration: none;
+  word-break: break-word;
+}
+.contact-list a:hover { text-decoration: underline; }
+
+/* ---------- 14. FOOTER ---------- */
+.site-footer {
+  background: #111111;
+  padding: 48px 0;
+  font-size: 0.85rem; color: var(--grigio);
+}
+.footer-inner { display: grid; gap: 28px; }
+.footer-logo { width: 120px; height: auto; }
+.footer-info p { margin: 0 0 6px; }
+.footer-info a { color: var(--bianco); text-decoration: none; }
+.footer-info a:hover { text-decoration: underline; }
+
+/* =========================================================
+   SCHERMI PIÙ GRANDI
+   ========================================================= */
+
+/* Tablet (da 640px in su) */
+@media (min-width: 640px) {
+  :root { --gutter: 32px; }
+  .hero-actions { flex-direction: row; align-items: center; gap: 36px; }
+  .cards { grid-template-columns: 1fr 1fr; }
+  .trainers { grid-template-columns: 1fr 1fr; gap: 32px; }
+  .contact-actions { flex-direction: row; }
+}
+
+/* Desktop (da 960px in su) */
+@media (min-width: 960px) {
+  :root { --header-h: 80px; --taglio: 80px; }
+  .header-logo img { height: 46px; }
+
+  /* Il menu torna orizzontale e sempre visibile */
+  .nav-toggle { display: none; }
+  .nav {
+    position: static;
+    flex-direction: row; align-items: center; gap: 28px;
+    padding: 0; background: none;
+    visibility: visible; opacity: 1;
+  }
+  .nav a {
+    font-size: 0.75rem; font-weight: 600;
+    letter-spacing: 0.15em; padding: 6px 0;
+  }
+  .nav a:not(.btn):hover { text-decoration: underline; text-underline-offset: 6px; }
+  .nav .nav-cta { margin: 0 0 0 8px; padding: 12px 20px; font-size: 0.72rem; }
+
+  .section { padding: 120px 0 140px; }
+  .cut-top { padding-top: calc(var(--taglio) + 100px); }
+
+  .split { grid-template-columns: 1.2fr 1fr; gap: 80px; align-items: start; }
+  .cards { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .card { padding: 28px 22px 32px; }
+  .card h3 { font-size: 1.2rem; hyphens: auto; }
+  .card { min-height: 320px; }
+  .steps { grid-template-columns: repeat(3, 1fr); gap: 40px; }
+  .trainers { gap: 56px; }
+  .map { aspect-ratio: auto; height: 100%; min-height: 380px; }
+
+  .contact-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+
+  .footer-inner { grid-template-columns: auto 1fr; align-items: center; gap: 56px; }
+  .footer-info { display: flex; flex-wrap: wrap; gap: 6px 32px; }
+}
+
+/* Chi ha attivato "riduci movimento" nel sistema non vede animazioni */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; }
+}
