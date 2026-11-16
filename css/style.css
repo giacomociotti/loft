@@ -177,8 +177,9 @@ body.menu-aperto { overflow: hidden; }   /* blocca lo scroll sotto il menu */
 .hero {
   position: relative;
   min-height: 100svh;            /* altezza dello schermo del telefono */
-  display: flex; align-items: center;
-  padding: calc(var(--header-h) + 40px) 0 calc(var(--taglio) + 64px);
+  /* Su telefono: contenuti e scritta LOFT uno sotto l'altro */
+  display: flex; flex-direction: column; justify-content: center;
+  padding: calc(var(--header-h) + 40px) 0 calc(var(--taglio) + 24px);
   overflow: hidden;
   background:
     /* leggere righe diagonali, effetto "industriale" */
@@ -207,11 +208,13 @@ body.menu-aperto { overflow: hidden; }   /* blocca lo scroll sotto il menu */
   display: flex; flex-direction: column; align-items: flex-start; gap: 24px;
 }
 
+/* Grande LOFT decorativo.
+   Su telefono sta SOTTO i contenuti (non dietro), allineato al testo
+   e tagliato dal bordo destro dello schermo. */
 .hero-watermark {
-  position: absolute;
-  right: -12%; bottom: 8%;
-  width: 95%; max-width: 900px; height: auto;
-  opacity: 0.05;
+  width: 125%; max-width: none; height: auto;
+  margin: 56px 0 0 var(--gutter);
+  opacity: 0.09;
   pointer-events: none;
 }
 
@@ -406,6 +409,16 @@ body.menu-aperto { overflow: hidden; }   /* blocca lo scroll sotto il menu */
 @media (min-width: 960px) {
   :root { --header-h: 80px; --taglio: 80px; }
   .header-logo img { height: 46px; }
+
+  /* Hero su desktop: la scritta LOFT torna sullo sfondo, a destra */
+  .hero { flex-direction: row; align-items: center; padding-bottom: calc(var(--taglio) + 64px); }
+  .hero-watermark {
+    position: absolute;
+    right: -12%; bottom: 8%;
+    width: 95%; max-width: 900px;
+    margin: 0;
+    opacity: 0.05;
+  }
 
   /* Il menu torna orizzontale e sempre visibile */
   .nav-toggle { display: none; }
