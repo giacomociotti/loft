@@ -212,8 +212,8 @@ body.menu-aperto { overflow: hidden; }   /* blocca lo scroll sotto il menu */
    Su telefono sta SOTTO i contenuti (non dietro), allineato al testo
    e tagliato dal bordo destro dello schermo. */
 .hero-watermark {
-  width: 125%; max-width: none; height: auto;
-  margin: 56px 0 0 var(--gutter);
+  width: 104%; max-width: none; height: auto;   /* più largo dello schermo: la T è tagliata solo in parte */
+  margin: 28px 0 0 var(--gutter);
   opacity: 0.09;
   pointer-events: none;
 }
