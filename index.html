@@ -59,6 +59,15 @@
       "addressRegion": "RN",
       "addressCountry": "IT"
     },
+    "openingHoursSpecification": [
+      { "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "opens": "06:00", "closes": "20:30" },
+      { "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Saturday",
+        "opens": "06:00", "closes": "13:00" }
+    ],
+    "hasMap": "https://maps.app.goo.gl/HEeSXWWouQDTuFud7",
     "sameAs": ["https://www.instagram.com/loft.studiopt"]
   }
   </script>
@@ -283,9 +292,10 @@
             </p>
 
             <h3>Orari</h3>
+            <!-- Orari presi dalla scheda Google Maps di LOFT (22/11/2026), da confermare con i titolari.
+                 Se cambiano, aggiornarli anche nei dati strutturati (openingHoursSpecification) in cima alla pagina. -->
+            <p>Lunedì – Venerdì: 6:00 – 20:30<br>Sabato: 6:00 – 13:00</p>
             <p>Su appuntamento, in base alle tue esigenze.</p>
-            <!-- DA SOSTITUIRE: fasce orarie di apertura -->
-            <p class="placeholder">Lun–Ven: [DA INSERIRE]<br>Sabato: [DA INSERIRE]</p>
           </div>
 
           <!-- Mappa: immagine statica salvata nel sito (assets/img/mappa-loft.webp).
