@@ -130,7 +130,18 @@ strong { font-weight: 600; }
 }
 .btn-light { background: var(--bianco); color: var(--nero); }
 .btn-light:hover, .btn-light:focus-visible { background: var(--grigio-chiaro); }
-.btn-outline { border-color: var(--bianco); color: var(--bianco); }
+.btn-outline { border-color: var(--bianco); color: var(--bianco); position: relative; }
+/* Il taglio in diagonale (clip-path) "mangia" anche il bordo nell'angolo:
+   qui ridisegniamo la linea lungo il taglio, dello stesso colore del bordo. */
+.btn-outline::after {
+  content: "";
+  position: absolute; right: -2px; bottom: -2px;   /* -2px = spessore del bordo */
+  width: 14px; height: 14px;                       /* = misura del taglio */
+  background: linear-gradient(to bottom right,
+    transparent calc(50% - 2px), currentColor calc(50% - 2px),
+    currentColor 50%, transparent 50%);
+  pointer-events: none;
+}
 .btn-outline:hover, .btn-outline:focus-visible { background: var(--bianco); color: var(--nero); }
 .btn:focus-visible { outline: none; text-decoration: underline; text-underline-offset: 4px; }
 
