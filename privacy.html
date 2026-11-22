@@ -6,16 +6,15 @@
   <title>Privacy – LOFT</title>
   <meta name="robots" content="noindex">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/logo/favicon-32.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+  <!-- Font Montserrat ospitato nel sito (vedi css/style.css): "preload" lo fa scaricare subito -->
+  <link rel="preload" href="assets/fonts/montserrat-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/style.css?v=6">
 </head>
 <body class="section-light">
   <!--
     BOZZA MINIMA – DA FAR VERIFICARE prima della pubblicazione definitiva.
-    Il sito non raccoglie dati tramite moduli, ma usa servizi esterni
-    (Google Fonts, Google Maps, GitHub Pages) che possono registrare l'IP del visitatore.
+    Il sito non raccoglie dati tramite moduli. Font e mappa sono salvati nel sito stesso:
+    l'unico servizio esterno coinvolto è l'hosting (GitHub Pages), che registra l'IP del visitatore.
   -->
   <main class="section">
     <div class="container prose" style="max-width: 760px;">
@@ -23,12 +22,8 @@
       <h1 class="section-title">Privacy</h1>
       <p><strong>Titolare del trattamento:</strong> [DA INSERIRE – ragione sociale, P.IVA, indirizzo, email].</p>
       <p>Questo sito è una pagina informativa. Non contiene moduli di contatto, non richiede registrazione e non usa cookie di profilazione o di analisi.</p>
-      <p>Per mostrare correttamente la pagina vengono usati alcuni servizi esterni, che possono ricevere dati tecnici come l'indirizzo IP del visitatore:</p>
-      <ul>
-        <li><strong>GitHub Pages</strong> (hosting del sito);</li>
-        <li><strong>Google Fonts</strong> (caratteri tipografici);</li>
-        <li><strong>Google Maps</strong> (mappa nella sezione "Dove siamo").</li>
-      </ul>
+      <p>Il sito è ospitato su <strong>GitHub Pages</strong> (GitHub, Inc.), che per farlo funzionare riceve dati tecnici come l'indirizzo IP del visitatore. Caratteri tipografici e mappa sono salvati nel sito stesso: aprendo la pagina non vengono contattati altri servizi esterni.</p>
+      <p>Il link "Apri in Google Maps" e la mappa portano al sito di Google Maps, che ha una propria informativa sulla privacy.</p>
       <p>Se ci contatti via telefono, WhatsApp o email, useremo i dati che ci fornisci solo per risponderti e organizzare le lezioni.</p>
       <p>Per qualsiasi richiesta sui tuoi dati puoi scriverci all'indirizzo email indicato nella pagina Contatti.</p>
     </div>

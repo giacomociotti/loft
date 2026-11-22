@@ -36,11 +36,10 @@
   <link rel="apple-touch-icon" href="assets/logo/apple-touch-icon.png">
 
   <!-- Font: Montserrat da Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800;900&display=swap" rel="stylesheet">
+  <!-- Font Montserrat ospitato nel sito (vedi css/style.css): "preload" lo fa scaricare subito -->
+  <link rel="preload" href="assets/fonts/montserrat-latin.woff2" as="font" type="font/woff2" crossorigin>
 
-  <link rel="stylesheet" href="css/style.css?v=5">
+  <link rel="stylesheet" href="css/style.css?v=6">
 
   <!-- Dati strutturati per Google (scheda attività locale).
        Telefono ed email da aggiungere quando saranno quelli reali:
@@ -289,14 +288,15 @@
             <p class="placeholder">Lun–Ven: [DA INSERIRE]<br>Sabato: [DA INSERIRE]</p>
           </div>
 
-          <!-- Mappa Google: embed gratuito, nessuna API key necessaria -->
+          <!-- Mappa: immagine statica salvata nel sito (assets/img/mappa-loft.webp),
+               ricavata da OpenStreetMap. Niente servizi esterni caricati nella pagina,
+               quindi niente cookie e niente banner. Un tocco apre Google Maps.
+               La scritta "© OpenStreetMap" è obbligatoria per la licenza: non toglierla. -->
           <div class="map">
-            <iframe
-              title="Mappa: LOFT, Via Circonvallazione Occidentale 32, Rimini"
-              src="https://www.google.com/maps?q=Via+Circonvallazione+Occidentale+32,+Rimini&output=embed"
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"
-              allowfullscreen></iframe>
+            <a href="https://www.google.com/maps/search/?api=1&query=Via+Circonvallazione+Occidentale+32+Rimini" target="_blank" rel="noopener" aria-label="Apri la posizione di LOFT in Google Maps">
+              <img src="assets/img/mappa-loft.webp" alt="Mappa del centro di Rimini con la posizione di LOFT in Via Circonvallazione Occidentale 32, vicino a Castel Sismondo" loading="lazy" width="1000" height="760">
+            </a>
+            <small class="map-credit">© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a></small>
           </div>
         </div>
       </div>
