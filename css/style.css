@@ -320,8 +320,6 @@ body.menu-aperto { overflow: hidden; }   /* blocca lo scroll sotto il menu */
   font-weight: 300; color: #D6D6D6;
   max-width: 40em; margin: 0 0 24px;
 }
-/* Etichette bianche (le .tags normali hanno il bordo nero, per sfondo chiaro) */
-.tags-light li { border-color: rgba(255,255,255,.55); }
 
 /* Telefono e tablet: striscia di foto che scorre di lato.
    Si vede un pezzo della foto successiva, così si capisce che si può scorrere. */
