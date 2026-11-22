@@ -312,6 +312,41 @@ body.menu-aperto { overflow: hidden; }   /* blocca lo scroll sotto il menu */
   padding: 6px 10px;
 }
 
+/* ---------- 10b. LO STUDIO: foto della palestra ---------- */
+/* Sfondo antracite: fa da passaggio tra la sezione bianca (trainer)
+   e quella nera (come funziona), senza rompere l'alternanza. */
+.section-studio { background: var(--antracite); color: var(--bianco); }
+.studio-lead {
+  font-weight: 300; color: #D6D6D6;
+  max-width: 40em; margin: 0 0 24px;
+}
+/* Etichette bianche (le .tags normali hanno il bordo nero, per sfondo chiaro) */
+.tags-light li { border-color: rgba(255,255,255,.55); }
+
+/* Telefono e tablet: striscia di foto che scorre di lato.
+   Si vede un pezzo della foto successiva, così si capisce che si può scorrere. */
+.gallery {
+  display: flex; gap: 12px;
+  margin: 40px calc(var(--gutter) * -1) 0;   /* arriva fino ai bordi dello schermo */
+  padding: 0 var(--gutter);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;              /* ogni foto si "aggancia" al bordo */
+  scroll-padding: 0 var(--gutter);
+  scrollbar-width: none;                      /* nasconde la barra di scorrimento */
+}
+.gallery::-webkit-scrollbar { display: none; }
+.gallery img {
+  flex: 0 0 80%;
+  width: 80%;
+  height: auto;                               /* l'altezza la decide il formato 4:5 */
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  scroll-snap-align: start;
+  /* bianco e nero ad alto contrasto, come le foto dei trainer */
+  filter: grayscale(1) contrast(1.15);
+  background: var(--nero);                    /* colore mentre la foto carica */
+}
+
 /* ---------- 11. COME FUNZIONA ---------- */
 .steps {
   list-style: none; margin: 0; padding: 0;
@@ -403,6 +438,7 @@ body.menu-aperto { overflow: hidden; }   /* blocca lo scroll sotto il menu */
   .cards { grid-template-columns: 1fr 1fr; }
   .trainers { grid-template-columns: 1fr 1fr; gap: 32px; }
   .contact-actions { flex-direction: row; }
+  .gallery img { flex-basis: 44%; width: 44%; }   /* tablet: due foto e mezza */
 }
 
 /* Desktop (da 960px in su) */
@@ -420,21 +456,6 @@ body.menu-aperto { overflow: hidden; }   /* blocca lo scroll sotto il menu */
     opacity: 0.05;
   }
 
-  /* Il menu torna orizzontale e sempre visibile */
-  .nav-toggle { display: none; }
-  .nav {
-    position: static;
-    flex-direction: row; align-items: center; gap: 28px;
-    padding: 0; background: none;
-    visibility: visible; opacity: 1;
-  }
-  .nav a {
-    font-size: 0.75rem; font-weight: 600;
-    letter-spacing: 0.15em; padding: 6px 0;
-  }
-  .nav a:not(.btn):hover { text-decoration: underline; text-underline-offset: 6px; }
-  .nav .nav-cta { margin: 0 0 0 8px; padding: 12px 20px; font-size: 0.72rem; }
-
   .section { padding: 120px 0 140px; }
   .cut-top { padding-top: calc(var(--taglio) + 100px); }
 
@@ -445,12 +466,46 @@ body.menu-aperto { overflow: hidden; }   /* blocca lo scroll sotto il menu */
   .card { min-height: 320px; }
   .steps { grid-template-columns: repeat(3, 1fr); gap: 40px; }
   .trainers { gap: 56px; }
+
+  /* Lo studio: griglia con la prima foto grande a sinistra e 4 piccole a destra */
+  .gallery {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 16px;
+    margin: 56px 0 0; padding: 0;
+    overflow: visible;
+  }
+  .gallery img { width: 100%; }
+  .gallery img:first-child {
+    grid-row: span 2;
+    aspect-ratio: auto; height: 100%;          /* alta quanto le due righe a destra */
+    contain: size;                             /* la sua misura non allunga la griglia */
+  }
   .map { aspect-ratio: auto; height: 100%; min-height: 380px; }
 
   .contact-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
 
   .footer-inner { grid-template-columns: auto 1fr; align-items: center; gap: 56px; }
   .footer-info { display: flex; flex-wrap: wrap; gap: 6px 32px; }
+}
+
+/* Menu orizzontale (da 1180px in su).
+   Sotto questa larghezza le 6 voci non stanno su una riga: resta l'hamburger. */
+@media (min-width: 1180px) {
+  .nav-toggle { display: none; }
+  .nav {
+    position: static;
+    flex-direction: row; align-items: center; gap: 24px;
+    padding: 0; background: none;
+    visibility: visible; opacity: 1;
+  }
+  .nav a {
+    font-size: 0.75rem; font-weight: 600;
+    letter-spacing: 0.15em; padding: 6px 0;
+    white-space: nowrap;                       /* niente voci spezzate su due righe */
+  }
+  .nav a:not(.btn):hover { text-decoration: underline; text-underline-offset: 6px; }
+  .nav .nav-cta { margin: 0 0 0 8px; padding: 12px 20px; font-size: 0.72rem; }
 }
 
 /* Chi ha attivato "riduci movimento" nel sistema non vede animazioni */
