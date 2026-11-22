@@ -39,7 +39,7 @@
   <!-- Font Montserrat ospitato nel sito (vedi css/style.css): "preload" lo fa scaricare subito -->
   <link rel="preload" href="assets/fonts/montserrat-latin.woff2" as="font" type="font/woff2" crossorigin>
 
-  <link rel="stylesheet" href="css/style.css?v=6">
+  <link rel="stylesheet" href="css/style.css?v=7">
 
   <!-- Dati strutturati per Google (scheda attività locale).
        Telefono ed email da aggiungere quando saranno quelli reali:
@@ -279,7 +279,7 @@
               47923 Rimini (RN)
             </p>
             <p>
-              <a class="link-arrow link-dark" href="https://www.google.com/maps/search/?api=1&query=Via+Circonvallazione+Occidentale+32+Rimini" target="_blank" rel="noopener">Apri in Google Maps</a>
+              <a class="link-arrow link-dark" href="https://maps.app.goo.gl/HEeSXWWouQDTuFud7" target="_blank" rel="noopener">Apri in Google Maps</a>
             </p>
 
             <h3>Orari</h3>
@@ -288,15 +288,15 @@
             <p class="placeholder">Lun–Ven: [DA INSERIRE]<br>Sabato: [DA INSERIRE]</p>
           </div>
 
-          <!-- Mappa: immagine statica salvata nel sito (assets/img/mappa-loft.webp),
-               ricavata da OpenStreetMap. Niente servizi esterni caricati nella pagina,
-               quindi niente cookie e niente banner. Un tocco apre Google Maps.
-               La scritta "© OpenStreetMap" è obbligatoria per la licenza: non toglierla. -->
+          <!-- Mappa Google incorporata (gratuita, senza API key), centrata sulla scheda
+               Google di LOFT. In scala di grigi tramite CSS. -->
           <div class="map">
-            <a href="https://www.google.com/maps/search/?api=1&query=Via+Circonvallazione+Occidentale+32+Rimini" target="_blank" rel="noopener" aria-label="Apri la posizione di LOFT in Google Maps">
-              <img src="assets/img/mappa-loft.webp" alt="Mappa del centro di Rimini con la posizione di LOFT in Via Circonvallazione Occidentale 32, vicino a Castel Sismondo" loading="lazy" width="1000" height="760">
-            </a>
-            <small class="map-credit">© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a></small>
+            <iframe
+              title="Mappa: LOFT – Lab of Functional Training, Via Circonvallazione Occidentale 32, Rimini"
+              src="https://www.google.com/maps?q=LOFT+-+Lab+of+Functional+Training,+Via+Circonvallazione+Occidentale+32,+Rimini&output=embed"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              allowfullscreen></iframe>
           </div>
         </div>
       </div>
