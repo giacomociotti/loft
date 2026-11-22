@@ -39,7 +39,7 @@
   <!-- Font Montserrat ospitato nel sito (vedi css/style.css): "preload" lo fa scaricare subito -->
   <link rel="preload" href="assets/fonts/montserrat-latin.woff2" as="font" type="font/woff2" crossorigin>
 
-  <link rel="stylesheet" href="css/style.css?v=7">
+  <link rel="stylesheet" href="css/style.css?v=9">
 
   <!-- Dati strutturati per Google (scheda attività locale).
        Telefono ed email da aggiungere quando saranno quelli reali:
@@ -288,15 +288,18 @@
             <p class="placeholder">Lun–Ven: [DA INSERIRE]<br>Sabato: [DA INSERIRE]</p>
           </div>
 
-          <!-- Mappa Google incorporata (gratuita, senza API key), centrata sulla scheda
-               Google di LOFT. In scala di grigi tramite CSS. -->
+          <!-- Mappa: immagine statica salvata nel sito (assets/img/mappa-loft.webp).
+               Disegnata da dati OpenStreetMap (stile OpenFreeMap) in alta definizione:
+               il file è 2000×1520 pixel e il CSS lo mostra a metà (1000×760),
+               così resta nitido sugli schermi dei telefoni.
+               Nessun servizio esterno viene caricato: niente cookie, niente banner.
+               Un tocco apre la scheda Google Maps di LOFT.
+               La scritta con © OpenStreetMap è obbligatoria per la licenza: non toglierla. -->
           <div class="map">
-            <iframe
-              title="Mappa: LOFT – Lab of Functional Training, Via Circonvallazione Occidentale 32, Rimini"
-              src="https://www.google.com/maps?q=LOFT+-+Lab+of+Functional+Training,+Via+Circonvallazione+Occidentale+32,+Rimini&output=embed"
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"
-              allowfullscreen></iframe>
+            <a href="https://maps.app.goo.gl/HEeSXWWouQDTuFud7" target="_blank" rel="noopener" aria-label="Apri la posizione di LOFT in Google Maps">
+              <img src="assets/img/mappa-loft.webp" alt="Mappa di Rimini con la posizione di LOFT in Via Circonvallazione Occidentale 32" loading="lazy" width="1000" height="760">
+            </a>
+            <small class="map-credit">© <a href="https://openfreemap.org" target="_blank" rel="noopener">OpenFreeMap</a> © <a href="https://openmaptiles.org" target="_blank" rel="noopener">OpenMapTiles</a> © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a></small>
           </div>
         </div>
       </div>
